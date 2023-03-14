@@ -8,12 +8,13 @@ class Dimensions {
 }
  //Dimensions dimensions=Dimensions();
 List<Dimensions> d = [];
-
+List<List<Color>> color = [[],[],[],[]];
+bool value=true;
 int count=0;
-
-class MQuerry{
-  var width;
+var width;
     var height;
+class MQuerry{
+  
   void init(BuildContext context){
     
      MediaQueryData _mediaQuery=MediaQuery.of(context);

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:amhs/categoryDetails.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:amhs/dimensions.dart';
+import 'package:amhs/cardButton.dart';
 
 class CatScreen extends StatefulWidget {
   final int indexNum;
@@ -17,10 +19,11 @@ class _CatScreenState extends State<CatScreen> {
   String weight = "";
   String cost = "";
   String location = "";
-  Widget textfield(String text, String identifier) {
+  Widget textfield(String text, String identifier, TextInputType type) {
     return SizedBox(
       width: 120,
       child: TextFormField(
+        keyboardType: type,
         decoration: InputDecoration(
             labelText: text, labelStyle: TextStyle(fontSize: 30)),
         onChanged: (var value) {
@@ -64,30 +67,31 @@ class _CatScreenState extends State<CatScreen> {
         Scaffold(
           backgroundColor: Colors.transparent,
           body: Padding(
-            padding: const EdgeInsets.fromLTRB(400, 240, 350, 250),
+            padding: EdgeInsets.symmetric(
+                vertical: height * 0.16, horizontal: width * 0.31),
             child: SizedBox(
-              width: 400,
-              height: 800,
+              width: width * 0.29,
+              height: height * 0.60,
               child: ListView(
                 shrinkWrap: true,
                 children: [
-                  textfield('CATEGORY ID', 'Id'),
+                  textfield('CATEGORY ID', 'Id', TextInputType.number),
                   const SizedBox(
                     height: 30,
                   ),
-                  textfield('CATEGORY NAME', 'name'),
+                  textfield('CATEGORY NAME', 'name', TextInputType.name),
                   const SizedBox(
                     height: 30,
                   ),
-                  textfield('WEIGHT', 'weight'),
+                  textfield('WEIGHT', 'weight', TextInputType.number),
                   const SizedBox(
                     height: 30,
                   ),
-                  textfield('COST', 'cost'),
+                  textfield('COST', 'cost', TextInputType.number),
                   const SizedBox(
                     height: 30,
                   ),
-                  textfield('LOCATION', 'location'),
+                  textfield('LOCATION', 'location', TextInputType.name),
                   const SizedBox(
                     height: 30,
                   ),
@@ -95,7 +99,19 @@ class _CatScreenState extends State<CatScreen> {
                     children: [
                       TextButton(
                         onPressed: () {
-                          //container.remove(widget.listNum);
+                         
+
+                          // if (Id.isEmpty ||
+                          //     name.isEmpty ||
+                          //     weight.isEmpty ||
+                          //     cost.isEmpty ||
+                          //     location.isEmpty) {
+                          //   // container.remove(widget.listNum);
+                          //   print('B' + '${container.length}');
+                          //   //container.removeLast();
+                          //   //container.removeAt(widget.indexNum);
+                          //   print('A' + '${container.length}');
+                          // }
                           Navigator.pop(context);
                         },
                         child: const Text(
@@ -104,29 +120,31 @@ class _CatScreenState extends State<CatScreen> {
                         ),
                       ),
                       const SizedBox(
-                        width: 200,
+                        width: 150,
                       ),
                       TextButton(
                         onPressed: () async {
+                           setState(() {
+                            container[widget.listNum - 1].add(
+                              CardButton(id: widget.indexNum),
+                            );
+                          });
                           if (Id.isEmpty ||
                               name.isEmpty ||
                               weight.isEmpty ||
                               cost.isEmpty ||
                               location.isEmpty) {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return const AlertDialog(
-                                  title: Text('Error'),
-                                  content: Text("Values cannot be empty!"),
-                                );
-                              },
-                            );
+                            if (!await launchUrl(
+                              Uri.parse(
+                                'https://amhs.w3spaces.com/psg.html',
+                              ),
+                              mode: LaunchMode.platformDefault,
+                            )) ;
                           } else {
                             setState(() {
                               catDetails.add(CategoryDetails());
                             });
-
+                            catName[widget.listNum-1].add(name);
                             catDetails[widget.indexNum].catID = int.parse(Id);
                             catDetails[widget.indexNum].catName = name;
                             catDetails[widget.indexNum].weight =
@@ -141,7 +159,7 @@ class _CatScreenState extends State<CatScreen> {
 
                             if (!await launchUrl(
                               Uri.parse(
-                                'https://google.com',
+                                'https://amhs.w3spaces.com/psg.html',
                               ),
                               mode: LaunchMode.platformDefault,
                             )) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:amhs/dimensions.dart';
 import 'package:flutter/services.dart';
-import 'package:sizer/sizer.dart';
+
 
 class SecondPage extends StatefulWidget {
   final int value;
@@ -22,10 +22,7 @@ class _SecondPageState extends State<SecondPage> {
   String n = "";
   @override
   Widget build(BuildContext context) {
-    MQuerry().init(context);
-    MediaQueryData _mediaQuery=MediaQuery.of(context);
-     double width=_mediaQuery.size.width;
-     double height=_mediaQuery.size.height;
+   
     return Stack(
       children: [
         Container(
@@ -41,10 +38,10 @@ class _SecondPageState extends State<SecondPage> {
         Scaffold(
           backgroundColor: Colors.transparent,
           body: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 160,horizontal: 380),
+            padding:  EdgeInsets.symmetric(vertical: height*0.16,horizontal: width*0.31),
             child: SizedBox(
-              height: (width >800)?700:100,
-              width: (width >800)?590:100,
+              height: height*.92,
+              width: width*.32,
               child: ListView(
                 //shrinkWrap: true,
                 children: [
@@ -54,15 +51,16 @@ class _SecondPageState extends State<SecondPage> {
                     child: Text(
                       "RACK NAME",
                       
-                      style: TextStyle(fontSize: 60),
+                      style: TextStyle(fontSize: 40),
                     ),
                   ),
                   const SizedBox(
                     //margin: EdgeInsets.all(10),
-                    height: 25,
+                    height: 15,
                   ),
                   SizedBox(
-                    width: 250,
+                    width: width*0.35,
+                    height: height*0.13,
                     child: TextField(
                       scrollPadding: EdgeInsets.only(bottom: 20),
                       style: const TextStyle(
@@ -80,28 +78,29 @@ class _SecondPageState extends State<SecondPage> {
                     ),
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "SLOTS",
-                      style: TextStyle(fontSize: 60),
+                      style: TextStyle(fontSize: 40),
                     ),
                   ),
                   const SizedBox(
-                    height: 50,
+                    height: 40,
                   ),
                   Row(
                     children: [
                       SizedBox(
-                        width: 250,
+                        width: width*0.14,
+                        height: height*0.13,
                         child: TextField(
                           style: const TextStyle(fontSize: 35),
                           decoration: InputDecoration(
                             border: const OutlineInputBorder(),
                               hintStyle: const TextStyle(
-                                fontSize: 40,
+                                fontSize: 30,
                               ),
                               hintText: 'Row',
                               errorText: isRowEmpty ? 'Value required' : null),
@@ -122,17 +121,18 @@ class _SecondPageState extends State<SecondPage> {
                         ),
                       ),
                       const SizedBox(
-                        width: 50,
+                        width: 35,
                       ),
                       SizedBox(
-                        width: 250,
+                        width: width*0.14,
+                        height: height*0.13,
                         child: TextField(
                           style: const TextStyle(fontSize: 35),
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             hintText: 'Column',
                             hintStyle: TextStyle(
-                              fontSize: 40,
+                              fontSize: 30,
                             ),
                           ),
                           keyboardType: TextInputType.number,
@@ -150,14 +150,14 @@ class _SecondPageState extends State<SecondPage> {
                     ],
                   ),
                   const SizedBox(
-                    height: 100,
+                    height: 50,
                   ),
                  //const  SizedBox(height: 50,),
                   Row(
                     children: [
                       SizedBox(
                         //height: 100,
-                        width: 250,
+                        width: width*0.14,
                         child: TextButton(
                           
                           onPressed: () {
@@ -166,17 +166,17 @@ class _SecondPageState extends State<SecondPage> {
                           child: const Text(
                             "BACK",
                             style: TextStyle(
-                              fontSize: 40,
+                              fontSize: 30,
                               color: Colors.red,
                             ),
                           ),
                         ),
                       ),
                       const SizedBox(
-                        width: 72,
+                        width: 30,
                       ),
                       SizedBox(
-                        width: 250,
+                        width: width*0.14,
                         child: TextButton(
                           onPressed: () {
                             // if(r.isEmpty){
@@ -211,13 +211,16 @@ class _SecondPageState extends State<SecondPage> {
                               d[widget.value - 1].row = int.parse(r);
                               d[widget.value - 1].col = int.parse(c);
                               Navigator.pushNamed(context, '/third',
-                                  arguments: widget.value);
+                                  arguments: {
+                                    'index': widget.value,
+                                    'value':true,
+                                  });
                             }
                           },
                           child: const Text(
                             "NEXT",
                             style: TextStyle(
-                              fontSize: 40,
+                              fontSize: 30,
                               color: Colors.red,
                             ),
                           ),

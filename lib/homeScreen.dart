@@ -1,7 +1,7 @@
 import 'package:amhs/button.dart';
 import 'package:flutter/material.dart';
 import 'package:amhs/dimensions.dart';
-import 'package:sizer/sizer.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -36,13 +36,14 @@ class _HomeScreenState extends State<HomeScreen> {
             alignment: Alignment.bottomLeft,
             child: Padding(
               
-              padding: (mQuerry.width>800)?const EdgeInsets.fromLTRB(60,0, 0,20):const EdgeInsets.fromLTRB(40,0, 0,10),
+              padding: EdgeInsets.only(left: width*0.02,bottom: height*0.001),
               child: SizedBox(
-                height: (mQuerry.width>800)?100:55,
-                width: (mQuerry.width>800)?100:55,
+                height: height*0.12,
+                width: width*0.12,
                 child: FloatingActionButton(
                   //shape: ,
                   onPressed: () {
+                    
                     setState(() {
                       // print(width);
                       // print(height);
@@ -75,21 +76,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       count++;
                     });
                   },
-                  child: const Icon(Icons.add,size: 50,),
+                  child: const Icon(Icons.add,size: 40,),
                 ),
               ),
             ),
           ),
           backgroundColor: Colors.transparent,
           body: Padding(
-            padding:(mQuerry.width>800)?const EdgeInsets.fromLTRB(0,50, 0,0):const EdgeInsets.fromLTRB(40,0, 0,10),
+            padding: EdgeInsets.only(top: height*0.05),
             child: Row(
               children: [
                 Column(
                   children: [
                     SizedBox(
-                      width: 200,
-                      height: 700,
+                      width: width*.12,
+                      height: height*.75,
                       child: MediaQuery.removePadding(
                         removeTop: true,
                         context: context,
@@ -109,23 +110,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 //   width: 50,
                 // ),
                 // Padding(
-                //   padding: EdgeInsets.symmetric(horizontal: 20.w),
-                //   child: Column(
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     //crossAxisAlignment: CrossAxisAlignment.center,
-                //     children: const [
-                //       //SizedBox(width: double.infinity,),
-                //       Image(
-                //         image: AssetImage('Images/Picture 2.png'),
-                //         width: 100,
-                //         height: 100,
-                //       ),
-                //       Text("AUTOMATIC MATERIAL HANDLING"),
-                //       SizedBox(
-                //         height: 15,
-                //       ),
-                //       Text("IN INVENTORY MANAGEMENT SYSTEM"),
-                //     ],
+                //   padding: EdgeInsets.symmetric(horizontal: 20),
+                //   child: Container(
+                //     height: 20,
+                //     width: 20,
+                //     child: IconButton(icon: Icon(Icons.search),
+                //     onPressed: (){
+
+                //       showSearch(context: context, delegate: CustomDelegate());
+                //     },),
                 //   ),
                 // ),
               ],

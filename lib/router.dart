@@ -12,8 +12,8 @@ class RouteGenerator {
         var data = settings.arguments as int;
         return MaterialPageRoute(builder: (_) => SecondPage(data));
       case '/third':
-        var data = settings.arguments as int;
-        return MaterialPageRoute(builder: (_) => ThirdPage(index: data));
+        var data = settings.arguments as Map;
+        return MaterialPageRoute(builder: (_) => ThirdPage(index: data['index'],value: data['value'],));
       // break;
       case '/catScreen':
         var data = settings.arguments as Map;

@@ -9,3 +9,4 @@ class CategoryDetails{
 
 List<CategoryDetails> catDetails=[];
  List<List<Widget>> container=[[],[],[]];
+ List<List<String>> catName=[[],[],[]];
