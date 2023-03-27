@@ -1,14 +1,15 @@
+import 'package:amhs/categoryDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:amhs/router.dart';
 //import 'package:device_preview/device_preview.dart';
 import 'package:sizer/sizer.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]).then(
-      (value) => runApp(
-          const MyApp()));
+  SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft])
+      .then((value) => runApp(const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

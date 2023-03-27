@@ -13,7 +13,7 @@ class Button extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: SizedBox(
         height: height * 0.10,
-        width: width * 0.05,
+        width: width * 0.1,
         child: TextButton(
           onPressed: () {
             print(height);
@@ -32,11 +32,14 @@ class Button extends StatelessWidget {
           // backgroundColor: Colors.amber,),
           style: ButtonStyle(
             //shape: Material,
-            backgroundColor: MaterialStateProperty.all(Colors.amber),
+            backgroundColor: MaterialStateProperty.all(const Color(0xFF4BC4E3)),
           ),
           child: Text(
             "$id",
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 25,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),

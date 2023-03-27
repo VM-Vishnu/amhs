@@ -38,8 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
               
               padding: EdgeInsets.only(left: width*0.02,bottom: height*0.001),
               child: SizedBox(
-                height: height*0.12,
-                width: width*0.12,
+                height: height*0.10,
+                width: width*0.10,
                 child: FloatingActionButton(
                   //shape: ,
                   onPressed: () {
