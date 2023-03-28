@@ -78,7 +78,7 @@ class _CatScreenState extends State<CatScreen> {
                 vertical: height * 0.16, horizontal: width * 0.31),
             child: SizedBox(
               width: width * 0.29,
-              height: height * 0.60,
+              height: height * 0.66,
               child: ListView(
                 shrinkWrap: true,
                 children: [
@@ -157,7 +157,7 @@ class _CatScreenState extends State<CatScreen> {
                               location.isEmpty) {
                             if (!await launchUrl(
                               Uri.parse(
-                                'https://vm-vishnu.github.io/amhswebsite/',
+                                'https://am-19guv72dz-vmvishnuvpty-gmailcom.vercel.app/',
                               ),
                               mode: LaunchMode.platformDefault,
                             )) ;
@@ -232,10 +232,10 @@ class _CatScreenState extends State<CatScreen> {
                                   .create(widget.listNum, widget.indexNum);
                               if (!await launchUrl(
                                 Uri.parse(
-                                  //'https://am-19guv72dz-vmvishnuvpty-gmailcom.vercel.app/',
-                                  'https://amhs-psg.w3spaces.com'
+                                  'https://am-19guv72dz-vmvishnuvpty-gmailcom.vercel.app/',
+                                  //'https://amhs-psg.w3spaces.com'
                                 ),
-                                mode: LaunchMode.platformDefault,
+                                mode: LaunchMode.externalApplication,
                               )) {
                                 print('hai');
                                 print("Could not launch");
