@@ -1,13 +1,13 @@
 import 'package:amhs/customDelegate.dart';
 import 'package:flutter/material.dart';
 import 'package:amhs/dimensions.dart';
-import 'package:provider/provider.dart';
 import 'package:amhs/categoryDetails.dart';
+import 'package:provider/provider.dart';
 
 class ThirdPage extends StatefulWidget {
-  final int index;
+  final int listNum;
   final bool value;
-  const ThirdPage({required this.index, required this.value, super.key});
+  const ThirdPage({required this.listNum, required this.value, super.key});
   @override
   State<ThirdPage> createState() => _ThirdPageState();
 }
@@ -18,11 +18,11 @@ class _ThirdPageState extends State<ThirdPage> {
     super.initState();
     print(value);
     if (widget.value) {
-      print('Widget index ' + '${widget.index - 1}');
+      print('Widget index ' + '${widget.listNum - 1}');
 
-      color[widget.index - 1] = List.filled(
-          d[widget.index - 1].col * d[widget.index - 1].row, Colors.green);
-      print(color[widget.index - 1][0]);
+      color[widget.listNum - 1] = List.filled(
+          d[widget.listNum - 1].col * d[widget.listNum - 1].row, Colors.green);
+      print(color[widget.listNum - 1][0]);
     }
     //startAutoReload();
   }
@@ -51,7 +51,7 @@ class _ThirdPageState extends State<ThirdPage> {
                   padding: EdgeInsets.symmetric(
                       vertical: width * 0.01, horizontal: height * 0.02),
                   child: Text(
-                    d[widget.index - 1].name,
+                    d[widget.listNum - 1].name,
                     style: const TextStyle(fontSize: 35),
                   ),
                 ),
@@ -78,19 +78,21 @@ class _ThirdPageState extends State<ThirdPage> {
                               mainAxisSpacing: 40,
                               crossAxisCount: 3),
                       itemCount:
-                          d[widget.index - 1].row * d[widget.index - 1].col,
+                          d[widget.listNum - 1].row * d[widget.listNum - 1].col,
                       itemBuilder: (BuildContext context, index) {
                         return TextButton(
                           onPressed: () {
+                            // Timer.periodic(const Duration(seconds: 10),
+                            //     (Timer t) => setState(() {}));
                             print(index);
-                            print(widget.index);
+                            print(widget.listNum);
                             //print('C' + '${container.length}');
                             setState(() {
-                              if (color[widget.index - 1][index] ==
+                              if (color[widget.listNum - 1][index] ==
                                   Colors.green) {
-                                color[widget.index - 1][index] = Colors.red;
+                                color[widget.listNum - 1][index] = Colors.red;
                               } else {
-                                color[widget.index - 1][index] = Colors.green;
+                                color[widget.listNum - 1][index] = Colors.green;
                               }
                             });
                             Navigator.pushNamed(
@@ -98,7 +100,7 @@ class _ThirdPageState extends State<ThirdPage> {
                               '/catScreen',
                               arguments: {
                                 'indexNum': index,
-                                'listNum': widget.index
+                                'listNum': widget.listNum
                               },
                             );
                           },
@@ -110,7 +112,7 @@ class _ThirdPageState extends State<ThirdPage> {
                             ),
                             //fixedSize: MaterialStatePropertyAll(),
                             backgroundColor: MaterialStateProperty.all(
-                                color[widget.index - 1][index]),
+                                color[widget.listNum - 1][index]),
                           ),
                           child: Text(
                             '${index + 1}',
@@ -128,35 +130,48 @@ class _ThirdPageState extends State<ThirdPage> {
                 padding: EdgeInsets.only(
                   top: height * 0.16,
                 ),
-                child: SizedBox(
-                  height: 700,
-                  width: 230,
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(left: 70),
-                        height: 50,
-                        width: 50,
-                        child: IconButton(
-                          onPressed: () {
-                            // setState(() {
-                            //   container[widget.index];
-                            // });
-                            showSearch(
-                              context: context,
-                              delegate:
-                                  CustomDelegate(intIndex: widget.index - 1),
-                            );
-                          },
-                          icon: const Icon(Icons.search),
-                        ),
+                child: Column(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(left: 70),
+                      height: 50,
+                      width: 50,
+                      child: IconButton(
+                        onPressed: () {
+                          // setState(() {
+                          //   container[widget.index];
+                          // });
+                          print("List num in third screen  ${widget.listNum}");
+                          showSearch(
+                            context: context,
+                            delegate: CustomDelegate(
+                            intIndex: widget.listNum ,
+                            ),
+                          );
+                        },
+                        icon: const Icon(Icons.search),
                       ),
-                      ListView(
-                        shrinkWrap: true,
-                        children: container[widget.index - 1],
+                    ),
+                    SizedBox(
+                      height: 500,
+                      width: 230,
+                      child: Consumer(
+                        builder: (context, value, child) {
+                          // return Column(
+                          // children: [
+
+                          return ListView(
+                            shrinkWrap: true,
+                            children:
+                                Provider.of<Ctainer>(context, listen: true)
+                                    .container[widget.listNum - 1],
+                          );
+                          //   ],
+                          // );
+                        },
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],

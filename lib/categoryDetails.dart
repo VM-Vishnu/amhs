@@ -9,16 +9,16 @@ class CategoryDetails {
   String location = '';
 }
 
-List<CategoryDetails> catDetails = [];
+List<List<CategoryDetails>> catDetails = [[], [], [], [], [], []];
 List<List<String>> catName = [[], [], [], [], [], []];
-List<List<Widget>> container = [[], [], [], [], [], []];
+//List<List<Widget>> container = [[], [], [], [], [], []];
 
-// class Ctainer extends ChangeNotifier {
-//   List<List<Widget>> container = [[], [], [], [], [], []];
-//   void create(int num,int indexNum) {
-//     container[num - 1].add(
-//       CardButton(id: indexNum),
-//     );
-//     notifyListeners();
-//   }  
-// }
+class Ctainer extends ChangeNotifier {
+  List<List<Widget>> container = [[], [], [], [], [], []];
+  void create(int listNum, int indexNum) {
+    container[listNum - 1].add(
+      CardButton(indexNum: indexNum, listNum: listNum),
+    );
+    notifyListeners();
+  }
+}

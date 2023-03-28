@@ -134,7 +134,7 @@ class _CatScreenState extends State<CatScreen> {
                           //   //container.removeAt(widget.indexNum);
                           //   print('A' + '${container.length}');
                           // }
-                          //Navigator.pop(context,true);
+                          Navigator.pop(context, true);
                         },
                         child: const Text(
                           "BACK",
@@ -146,10 +146,9 @@ class _CatScreenState extends State<CatScreen> {
                       ),
                       TextButton(
                         onPressed: () async {
-                          //Provider.of<Ctainer>(context,listen: false).create(widget.listNum,widget.indexNum);
-                          container[widget.listNum - 1].add(
-                            CardButton(id: widget.indexNum),
-                          );
+                          // container[widget.listNum - 1].add(
+                          //   CardButton(id: widget.indexNum),
+                          // );
                           print("Hai");
                           if (Id.isEmpty ||
                               name.isEmpty ||
@@ -158,7 +157,7 @@ class _CatScreenState extends State<CatScreen> {
                               location.isEmpty) {
                             if (!await launchUrl(
                               Uri.parse(
-                                'https://project-amhs.w3spaces.com/psg.html',
+                                'https://vm-vishnu.github.io/amhswebsite/',
                               ),
                               mode: LaunchMode.platformDefault,
                             )) ;
@@ -169,23 +168,30 @@ class _CatScreenState extends State<CatScreen> {
                               //   CardButton(id: widget.indexNum),
                               // );
 
-                              catDetails.add(CategoryDetails());
+                              catDetails[widget.listNum - 1]
+                                  .add(CategoryDetails());
                             });
 
                             catName[widget.listNum - 1].add(name);
-                            catDetails[widget.indexNum].catID = int.parse(Id);
-                            catDetails[widget.indexNum].catName = name;
-                            catDetails[widget.indexNum].weight =
-                                int.parse(weight);
-                            catDetails[widget.indexNum].cost = int.parse(cost);
-                            catDetails[widget.indexNum].location = location;
+                            catDetails[widget.listNum - 1][widget.indexNum]
+                                .catID = int.parse(Id);
+                            catDetails[widget.listNum - 1][widget.indexNum]
+                                .catName = name;
+                            catDetails[widget.listNum - 1][widget.indexNum]
+                                .weight = int.parse(weight);
+                            catDetails[widget.listNum - 1][widget.indexNum]
+                                .cost = int.parse(cost);
+                            catDetails[widget.listNum - 1][widget.indexNum]
+                                .location = location;
                             // setState(() {
                             //   //container[widget.listNum-1].add(CardButton(id: widget.indexNum));
                             //   print(container[widget.listNum - 1]);
                             // });
                             //Navigator.pop(context);
                             if (widget.indexNum <= 2 &&
-                                catDetails[widget.indexNum].weight > 10) {
+                                catDetails[widget.listNum - 1][widget.indexNum]
+                                        .weight >
+                                    10) {
                               showDialog(
                                   context: context,
                                   builder: (context) {
@@ -196,7 +202,9 @@ class _CatScreenState extends State<CatScreen> {
                                     );
                                   });
                             } else if (widget.indexNum <= 5 &&
-                                catDetails[widget.indexNum].weight > 20) {
+                                catDetails[widget.listNum - 1][widget.indexNum]
+                                        .weight >
+                                    20) {
                               showDialog(
                                   context: context,
                                   builder: (context) {
@@ -207,7 +215,9 @@ class _CatScreenState extends State<CatScreen> {
                                     );
                                   });
                             } else if (widget.indexNum <= 8 &&
-                                catDetails[widget.indexNum].weight > 30) {
+                                catDetails[widget.listNum - 1][widget.indexNum]
+                                        .weight >
+                                    30) {
                               showDialog(
                                   context: context,
                                   builder: (context) {
@@ -218,9 +228,12 @@ class _CatScreenState extends State<CatScreen> {
                                     );
                                   });
                             } else {
+                              Provider.of<Ctainer>(context, listen: false)
+                                  .create(widget.listNum, widget.indexNum);
                               if (!await launchUrl(
                                 Uri.parse(
-                                  'https://project-amhs.w3spaces.com/psg.html',
+                                  //'https://am-19guv72dz-vmvishnuvpty-gmailcom.vercel.app/',
+                                  'https://amhs-psg.w3spaces.com'
                                 ),
                                 mode: LaunchMode.platformDefault,
                               )) {

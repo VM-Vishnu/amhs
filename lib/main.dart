@@ -21,11 +21,14 @@ class MyApp extends StatelessWidget {
     //RouteGenerator route=RouteGenerator();
     return Sizer(
       builder: ((context, orientation, deviceType) {
-        return const MaterialApp(
-          debugShowCheckedModeBanner: false,
-          onGenerateRoute: RouteGenerator.generateRoute,
-          initialRoute: '/',
-          //home: const HomeScreen(),
+        return ChangeNotifierProvider(
+          create: (context) => Ctainer(),
+          child: const MaterialApp(
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: RouteGenerator.generateRoute,
+            initialRoute: '/',
+            //home: const HomeScreen(),
+          ),
         );
       }),
     );

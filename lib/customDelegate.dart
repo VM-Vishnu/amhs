@@ -31,7 +31,7 @@ class CustomDelegate extends SearchDelegate {
   Widget buildResults(BuildContext context) {
     // TODO: implement buildResults
     List<String> matchQuery = [];
-    for (var name in catName[intIndex]) {
+    for (var name in catName[intIndex-1]) {
       if (name.toLowerCase().contains(query.toLowerCase())) {
         matchQuery.add(name);
         print(intIndex);
@@ -52,7 +52,7 @@ class CustomDelegate extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
     List<String> matchQuery = [];
-    for (var name in catName[intIndex]) {
+    for (var name in catName[intIndex-1]) {
       if (name.toLowerCase().contains(query.toLowerCase())) {
         print(intIndex);
         matchQuery.add(name);
@@ -62,13 +62,17 @@ class CustomDelegate extends SearchDelegate {
       itemCount: matchQuery.length,
       itemBuilder: (context, index) {
         var result = matchQuery[index];
-        int value = catName[intIndex].indexWhere((book) => book.contains(result));
+        int value = catName[intIndex-1].indexWhere((book) => book.contains(result));
         print("value is  $value");
+        print("List num is $intIndex");
         return ListTile(
           title: GestureDetector(
               onTap: () {
                 Navigator.pushNamed(context, '/catDisplayScreen',
-                    arguments: value+1);
+                    arguments: {
+                      'indexNum' : value+1,
+                      'listNum' : intIndex,
+                    });
               },
               child: Text(result)),
         );

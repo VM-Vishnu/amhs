@@ -32,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         Scaffold(
+          resizeToAvoidBottomInset: false,
           floatingActionButton: Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
@@ -70,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       // );
                       textButton.add(
                         Button(
-                          id: count,
+                          listNum: count,
                         ),
                       );
                       count++;

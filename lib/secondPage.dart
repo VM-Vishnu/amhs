@@ -36,6 +36,7 @@ class _SecondPageState extends State<SecondPage> {
           ),
         ),
         Scaffold(
+          resizeToAvoidBottomInset: false,
           backgroundColor: Colors.transparent,
           body: Padding(
             padding:  EdgeInsets.symmetric(vertical: height*0.16,horizontal: width*0.31),

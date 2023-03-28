@@ -13,7 +13,11 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => SecondPage(data));
       case '/third':
         var data = settings.arguments as Map;
-        return MaterialPageRoute(builder: (_) => ThirdPage(index: data['index'],value: data['value'],));
+        return MaterialPageRoute(
+            builder: (_) => ThirdPage(
+                  listNum: data['index'],
+                  value: data['value'],
+                ));
       // break;
       case '/catScreen':
         var data = settings.arguments as Map;
@@ -24,8 +28,12 @@ class RouteGenerator {
                   listNum: data['listNum'],
                 ));
       case '/catDisplayScreen':
-        var data=settings.arguments as int;
-        return MaterialPageRoute(builder: (_) => CatDisplayScreen(index:data));
+        var data = settings.arguments as Map;
+        return MaterialPageRoute(
+            builder: (_) => CatDisplayScreen(
+                  indexNum: data['indexNum'],
+                  listNum: data['listNum'],
+                ));
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
     }

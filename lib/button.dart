@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:amhs/dimensions.dart';
 
 class Button extends StatelessWidget {
-  final int id;
+  final int listNum;
   // final Function onPressed;
-  Button({super.key, required this.id});
+  const Button({super.key, required this.listNum});
   // MQuerry mQuerry = MQuerry();
 
   @override
@@ -18,12 +18,12 @@ class Button extends StatelessWidget {
           onPressed: () {
             print(height);
             print(width);
-            if (d[id - 1].row == -1) {
-              Navigator.pushNamed(context, '/second', arguments: id);
+            if (d[listNum - 1].row == -1) {
+              Navigator.pushNamed(context, '/second', arguments: listNum);
             } else {
-              print(id);
+              print(listNum);
               Navigator.pushNamed(context, '/third', arguments: {
-                'index': id,
+                'index': listNum,
                 'value': false,
               });
             }
@@ -35,7 +35,7 @@ class Button extends StatelessWidget {
             backgroundColor: MaterialStateProperty.all(const Color(0xFF4BC4E3)),
           ),
           child: Text(
-            "$id",
+            "$listNum",
             style: const TextStyle(fontSize: 25,
             color: Colors.white,
             fontWeight: FontWeight.bold,
