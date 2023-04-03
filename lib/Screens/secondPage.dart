@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:amhs/dimensions.dart';
+import 'package:amhs/Details/dimensions.dart';
 import 'package:flutter/services.dart';
-
 
 class SecondPage extends StatefulWidget {
   final int value;
@@ -11,9 +10,7 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
-  MQuerry mQuerry=MQuerry();
-  //int value=0;
-  //List<Dimensions> d=[];
+  MQuerry mQuerry = MQuerry();
   bool isRowEmpty = false;
   bool isColEmpty = false;
   bool isNameEmpty = false;
@@ -22,7 +19,6 @@ class _SecondPageState extends State<SecondPage> {
   String n = "";
   @override
   Widget build(BuildContext context) {
-   
     return Stack(
       children: [
         Container(
@@ -39,33 +35,31 @@ class _SecondPageState extends State<SecondPage> {
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.transparent,
           body: Padding(
-            padding:  EdgeInsets.symmetric(vertical: height*0.16,horizontal: width*0.31),
+            padding: EdgeInsets.symmetric(
+                vertical: height * 0.16, horizontal: width * 0.31),
             child: SizedBox(
-              height: height*.92,
-              width: width*.32,
+              height: height * .92,
+              width: width * .32,
               child: Align(
                 alignment: Alignment.center,
                 child: ListView(
-                  //shrinkWrap: true,
                   children: [
                     const SizedBox(height: 20),
                     const Align(
                       alignment: Alignment.topLeft,
                       child: Text(
                         "RACK NAME",
-                        
                         style: TextStyle(fontSize: 33),
                       ),
                     ),
                     const SizedBox(
-                      //margin: EdgeInsets.all(10),
                       height: 15,
                     ),
                     SizedBox(
-                      width: width*0.35,
-                      height: height*0.13,
+                      width: width * 0.35,
+                      height: height * 0.13,
                       child: TextField(
-                        scrollPadding: EdgeInsets.only(bottom: 20),
+                        scrollPadding: const EdgeInsets.only(bottom: 20),
                         style: const TextStyle(
                           fontSize: 30,
                           height: 1.5,
@@ -74,7 +68,6 @@ class _SecondPageState extends State<SecondPage> {
                           border: OutlineInputBorder(),
                         ),
                         keyboardType: TextInputType.name,
-                        //decoration: InputDecoration(),
                         onChanged: (String name) {
                           n = name;
                         },
@@ -96,18 +89,18 @@ class _SecondPageState extends State<SecondPage> {
                     Row(
                       children: [
                         SizedBox(
-                          width: width*0.14,
-                          height: height*0.13,
+                          width: width * 0.14,
+                          height: height * 0.13,
                           child: TextField(
                             style: const TextStyle(fontSize: 35),
                             decoration: InputDecoration(
-                              border: const OutlineInputBorder(),
+                                border: const OutlineInputBorder(),
                                 hintStyle: const TextStyle(
                                   fontSize: 30,
                                 ),
                                 hintText: 'Row',
-                                errorText: isRowEmpty ? 'Value required' : null),
-                            //controller: TextEditingController(text: "Hai"),
+                                errorText:
+                                    isRowEmpty ? 'Value required' : null),
                             keyboardType: TextInputType.number,
                             inputFormatters: <TextInputFormatter>[
                               FilteringTextInputFormatter.digitsOnly,
@@ -115,20 +108,14 @@ class _SecondPageState extends State<SecondPage> {
                             onChanged: (var row) {
                               r = row;
                             },
-                            // onSubmitted: (var row){
-                            //   d[widget.value - 1].row = int.parse(row);
-                            // },
-                            // onEditingComplete: () {
-                            //   d[widget.value - 1].row = int.parse(r);
-                            // },
                           ),
                         ),
                         const SizedBox(
                           width: 35,
                         ),
                         SizedBox(
-                          width: width*0.14,
-                          height: height*0.13,
+                          width: width * 0.14,
+                          height: height * 0.13,
                           child: TextField(
                             style: const TextStyle(fontSize: 35),
                             decoration: const InputDecoration(
@@ -142,12 +129,6 @@ class _SecondPageState extends State<SecondPage> {
                             onChanged: (var col) {
                               c = col;
                             },
-                            // onSubmitted: (var col){
-                            //       d[widget.value - 1].col = int.parse(col);
-                            // },
-                            // onEditingComplete: () {
-                      
-                            // },
                           ),
                         ),
                       ],
@@ -155,14 +136,11 @@ class _SecondPageState extends State<SecondPage> {
                     const SizedBox(
                       height: 50,
                     ),
-                   //const  SizedBox(height: 50,),
                     Row(
                       children: [
                         SizedBox(
-                          //height: 100,
-                          width: width*0.14,
+                          width: width * 0.14,
                           child: TextButton(
-                            
                             onPressed: () {
                               Navigator.pop(context, widget.value + 1);
                             },
@@ -179,34 +157,17 @@ class _SecondPageState extends State<SecondPage> {
                           width: 30,
                         ),
                         SizedBox(
-                          width: width*0.14,
+                          width: width * 0.14,
                           child: TextButton(
                             onPressed: () {
-                              // if(r.isEmpty){
-                              //   setState(() {
-                              //     isRowEmpty=true;
-                              //   });
-                              // }
-                              //  if(c.isEmpty){
-                              //   setState(() {
-                              //     isColEmpty=true;
-                              //   });
-                              // }
-                              //  if(name.isEmpty){
-                              //   setState(() {
-                              //     isNameEmpty=true;
-                              //   });
-                              // }
-                              print(widget.value);
-                              //List.empty();
-                              //container[widget.value-1].add(List<Widget>.empty());
                               if (n.isEmpty || r.isEmpty || c.isEmpty) {
                                 showDialog(
                                     context: context,
                                     builder: (context) {
                                       return const AlertDialog(
                                         title: Text('Error'),
-                                        content: Text("Values cannot be empty!"),
+                                        content:
+                                            Text("Values cannot be empty!"),
                                       );
                                     });
                               } else {
@@ -216,7 +177,7 @@ class _SecondPageState extends State<SecondPage> {
                                 Navigator.pushNamed(context, '/third',
                                     arguments: {
                                       'index': widget.value,
-                                      'value':true,
+                                      'value': true,
                                     });
                               }
                             },

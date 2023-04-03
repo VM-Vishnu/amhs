@@ -1,9 +1,9 @@
-import 'package:amhs/catDisplayScreen.dart';
-import 'package:amhs/homeScreen.dart';
-import 'package:amhs/secondPage.dart';
+import 'package:amhs/Screens/catDisplayScreen.dart';
+import 'package:amhs/Screens/homeScreen.dart';
+import 'package:amhs/Screens/secondPage.dart';
 import 'package:flutter/material.dart';
-import 'package:amhs/catScreen.dart';
-import 'package:amhs/thirdScreen.dart';
+import 'package:amhs/Screens/catScreen.dart';
+import 'package:amhs/Screens/thirdScreen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -18,10 +18,10 @@ class RouteGenerator {
                   listNum: data['index'],
                   value: data['value'],
                 ));
-      // break;
+
       case '/catScreen':
         var data = settings.arguments as Map;
-        //Arguments args = settings.arguments;
+
         return MaterialPageRoute(
             builder: (_) => CatScreen(
                   indexNum: data['indexNum'],

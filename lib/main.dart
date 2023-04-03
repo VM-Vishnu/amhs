@@ -1,8 +1,7 @@
-import 'package:amhs/categoryDetails.dart';
+import 'package:amhs/Details/categoryDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:amhs/router.dart';
-//import 'package:device_preview/device_preview.dart';
+import 'package:amhs/Details/router.dart';
 import 'package:sizer/sizer.dart';
 import 'package:provider/provider.dart';
 
@@ -15,10 +14,8 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    //RouteGenerator route=RouteGenerator();
     return Sizer(
       builder: ((context, orientation, deviceType) {
         return ChangeNotifierProvider(
@@ -27,7 +24,6 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RouteGenerator.generateRoute,
             initialRoute: '/',
-            //home: const HomeScreen(),
           ),
         );
       }),

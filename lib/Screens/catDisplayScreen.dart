@@ -1,11 +1,12 @@
-import 'package:amhs/categoryDetails.dart';
+import 'package:amhs/Details/categoryDetails.dart';
 import 'package:flutter/material.dart';
-import 'package:amhs/dimensions.dart';
+import 'package:amhs/Details/dimensions.dart';
 
 class CatDisplayScreen extends StatefulWidget {
   final int indexNum;
   final int listNum;
-  const CatDisplayScreen({required this.indexNum,required this.listNum, super.key});
+  const CatDisplayScreen(
+      {required this.indexNum, required this.listNum, super.key});
 
   @override
   State<CatDisplayScreen> createState() => _CatDisplayScreenState();
@@ -23,35 +24,35 @@ class _CatDisplayScreenState extends State<CatDisplayScreen> {
         ),
         if (value == 1)
           Text(
-            '${catDetails[widget.listNum-1][widget.indexNum-1 ].catID}',
+            '${catDetails[widget.listNum - 1][widget.indexNum - 1].catID}',
             style: const TextStyle(
               fontSize: 30,
             ),
           ),
         if (value == 2)
           Text(
-            catDetails[widget.listNum-1][widget.indexNum -1].catName,
+            catDetails[widget.listNum - 1][widget.indexNum - 1].catName,
             style: const TextStyle(
               fontSize: 30,
             ),
           ),
         if (value == 3)
           Text(
-            '${catDetails[widget.listNum-1][widget.indexNum -1].weight}',
+            '${catDetails[widget.listNum - 1][widget.indexNum - 1].weight}',
             style: const TextStyle(
               fontSize: 30,
             ),
           ),
         if (value == 4)
           Text(
-            '${catDetails[widget.listNum-1][widget.indexNum -1].cost}',
+            '${catDetails[widget.listNum - 1][widget.indexNum - 1].cost}',
             style: const TextStyle(
               fontSize: 30,
             ),
           ),
         if (value == 5)
           Text(
-            catDetails[widget.listNum-1][widget.indexNum -1].location,
+            catDetails[widget.listNum - 1][widget.indexNum - 1].location,
             style: const TextStyle(
               fontSize: 30,
             ),
@@ -83,8 +84,6 @@ class _CatDisplayScreenState extends State<CatDisplayScreen> {
               height: height * .92,
               width: width * .32,
               child: Column(
-                //shrinkWrap: true,
-                //crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   displayField('CATEGORY ID        ', 1),
